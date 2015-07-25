@@ -47,5 +47,5 @@
     - git config --global user.name "luap"
     - git config --global credential.helper store
     - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
-    - git tag -a $($env:appveyor_build_version) ($($env:APPVEYOR_REPO_COMMIT)).Substring(0, 8)
+    - ps: tag -a $($env:appveyor_build_version) ($($env:APPVEYOR_REPO_COMMIT)).Substring(0, 8)
     - git push origin --tags
