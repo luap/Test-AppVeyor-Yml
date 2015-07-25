@@ -43,9 +43,9 @@
       secure: p+keoDi2jTNqjh81Smi+yenFDrtWTaGqPYJ9aTCGMGM=
 
   on_success:
-    - ps: git config --global credential.helper store
+    - git config --global user.email "$($env:git_email)"
+    - git config --global user.name "luap"
+    - git config --global credential.helper store
     - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
-    - ps: git config --global user.email "$($env:git_email)"
-    - ps: git config --global user.name "luap"
-    - ps: git tag -a $($env:appveyor_build_version) ($($env:APPVEYOR_REPO_COMMIT)).Substring(0, 8)
-    - ps: git push origin --tags
+    - git tag -a $($env:appveyor_build_version) ($($env:APPVEYOR_REPO_COMMIT)).Substring(0, 8)
+    - git push origin --tags
