@@ -13,6 +13,8 @@
   branches:
     only:
       - master
+  
+  skip_tags: true
 
   build:
     parallel: true
