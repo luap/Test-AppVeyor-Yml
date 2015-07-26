@@ -43,6 +43,10 @@
       secure: p+keoDi2jTNqjh81Smi+yenFDrtWTaGqPYJ9aTCGMGM=
 
   on_success:
+    - ps: echo $($env:git_email)
+    - ps: echo $($env:access_token)
+    - ps: echo $($env:appveyor_build_version)
+    - ps: echo $($env:APPVEYOR_REPO_COMMIT)
     - ps: git config --global user.email "$($env:git_email)"
     - ps: git config --global user.name "luap"
     - ps: git config --global credential.helper store
